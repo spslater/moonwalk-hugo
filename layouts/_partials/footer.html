@@ -4,7 +4,7 @@
 		<a href="{{ .Site.BaseURL }}">homepage</a>
 	</li>
 
-	{{ range index .Site.Data.config.socials }}
+	{{ range index hugo.Data.config.socials }}
 		<li>
 			<a href="{{ .url }}">{{ .title }}</a>
 		</li>

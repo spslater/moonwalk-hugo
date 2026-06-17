@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-	{{ $timeformat := .Site.Data.config.blog.posts.date_format }}
+	{{ $timeformat := hugo.Data.config.blog.posts.date_format }}
 	{{ $dateHuman := .Date | time.Format $timeformat }}
 
 	<a href="{{ site.BaseURL }}">go back...</a>
