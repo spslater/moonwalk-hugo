@@ -3,19 +3,25 @@
 	{{ $timeformat := hugo.Data.config.blog.posts.date_format }}
 	{{ $dateHuman := .Date | time.Format $timeformat }}
 
-	<a href="{{ site.BaseURL }}">go back...</a>
-
   <h1 class="post-title">{{ .Title }}</h1>
 
 	<p class="post-date text-bold">
 		{{ .Page.Param "author" }}
-		/
+		|
   	{{ .Date | time.Format $timeformat }}
+		| {{ .Page.ReadingTime }} mins
 	</p>
 
 	{{ range $i, $e := .Param "tags" }}
 		<span class="tag">{{ $e }}</span>
 	{{ end }}
+
+	{{ with .Page.Param "repo" }}
+	<p><a href='{{ . }}'>Git Repo</a></p>
+	{{ end }}
+	{{ range $social := .Page.Param "socials" }}
+		<p>{{ $social.site }} - {{ $social.handle }}</p>
+	{{end}}
 
   {{ .Content }}
 {{ end }}

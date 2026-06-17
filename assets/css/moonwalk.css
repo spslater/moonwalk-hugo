@@ -145,3 +145,39 @@ p code, li code {
 	font-weight: bold;
 	text-transform: lowercase;
 }
+
+.term-list {
+	display: inline;
+	list-style: none;
+	padding: 0px;
+
+	& li {
+		display: inline;
+	}
+
+	& li::after {
+		content: ", ";
+	}
+
+	& li:last-child::after {
+		content: "";
+	}
+}
+
+.breadcrumbs {
+	display: inline;
+	list-style: none;
+	padding: 0px;
+
+	& li {
+		display: inline;
+	}
+
+	& li::after {
+		content: " / ";
+	}
+
+	& li:last-child::after {
+		content: "";
+	}
+}

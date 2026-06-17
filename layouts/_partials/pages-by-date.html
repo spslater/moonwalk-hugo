@@ -1,0 +1,14 @@
+{{ range .history.GroupByDate "2006" }}
+{{ $y := .Key }}
+{{ range .Pages.GroupByDate "January" }}
+{{ $m := .Key }}
+  <h3>{{ $y }} {{$m}}</h3>
+  {{ range .Pages.ByDate.Reverse }}
+    <article>
+      <span class="home-date">{{ .Date | time.Format hugo.Data.config.short_date }} » </span>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <span>({{ .Page.ReadingTime }} mins) « {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}</span>
+    </article>
+  {{ end }}
+{{ end }}
+{{ end }}

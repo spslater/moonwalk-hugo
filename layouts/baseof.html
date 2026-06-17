@@ -6,7 +6,12 @@
 <body>
 	<main>
 		<div class="w">
-    	{{ block "main" . }}{{ end }}
+			<header>{{ partial "header.html" . }}</header>
+			{{/*  <div>{{ partial "breadcrumbs.html" . }}</div>  */}}
+    		{{ block "main" . }}{{ end }}
+			<footer>
+				{{ partial "footer.html" . }}
+			</footer>
 		</div>
   </main>
 	<button class="theme-toggle" aria-label="theme-toggle">

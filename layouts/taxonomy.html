@@ -1,7 +1,10 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-  {{ end }}
+  <ul>
+    {{ range .Pages }}
+      {{ $taxonomy :=  (index .Site.Taxonomies.tags (.Page.LinkTitle | lower)) }}
+      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> - {{ $taxonomy.Count }} posts </li>
+    {{ end }}
+  </ul>
 {{ end }}

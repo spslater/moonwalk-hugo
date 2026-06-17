@@ -1,23 +1,11 @@
 {{ define "main" }}
 	{{ $p := where site.RegularPages "Type" "posts" }}
 
-	<a href="{{ site.BaseURL }}">go back...</a>
-
 	<header>
 		<h1>{{ site.Title }}</h1>
 	</header>
 
-	<ul>
-		{{ $timeformat := .Site.Data.config.blog.date_format }}
-		{{ range $p }}
-			<li>
-				<span class="home-date">
-					{{ .Date | time.Format $timeformat }}»
-				</span>
-				<a href="{{ .Permalink }}">
-					{{ .Title }}
-				</a>
-			</li>
-		{{- end }}
-	</ul>
+	{{ .Content }}
+
+	{{ partial "pages-by-date.html" ( dict "page" . "history" ( where .Site.RegularPages "Type" "posts" ) ) }}
 {{ end }}

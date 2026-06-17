@@ -1,7 +1,5 @@
 {{ define "main" }}
-	<header>
-		{{ partial "header.html" . }}
-	</header>
+	{{ .Content }}
 
 	{{ $portfolio := hugo.Data.config.home.portfolio }}
 	{{ if eq $portfolio true}}
@@ -34,8 +32,8 @@
 			{{ $timeformat := hugo.Data.config.home.date_format }}
 			{{ range where .Site.RegularPages "Type" "posts" }}
 				<li class="post-list-item">
-					{{ .Date | time.Format $timeformat }}»
-					<a href="{{ .Permalink }}">{{ .Title }}</a>
+					{{ .Date | time.Format $timeformat }} »
+					<a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ .Page.ReadingTime }} mins)
 				</li>
 			{{ end }}
 		</ul>
@@ -64,8 +62,4 @@
 			{{ end }}
 		</ul>
 	{{ end }}
-
-	<footer>
-		{{ partial "footer.html" . }}
-	</footer>
 {{ end }}
