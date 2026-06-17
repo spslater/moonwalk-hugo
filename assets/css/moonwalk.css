@@ -42,10 +42,16 @@ li {
   margin: 0.4em 0;
 }
 
-.w {
+header, main, footer {
   max-width: 720px;
   margin: 0 auto;
-  padding: 4em 2em;
+}
+
+header {
+  padding-top: 4em;
+}
+footer {
+  padding-bottom: 2em;
 }
 
 table, th, td {
@@ -128,7 +134,6 @@ p code, li code {
 
 .credits {
   font-size: 0.8em;
-  margin: 8em auto -4em auto;
   text-align: center;
 }
 .credits a {

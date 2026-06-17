@@ -1,5 +1,5 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-{{ .Content }}
-{{ partial "pages-by-date.html" ( dict "page" . "history" .Pages ) }}
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  {{ partial "pages-by-date.html" ( dict "page" . "history" .Pages ) }}
 {{ end }}
