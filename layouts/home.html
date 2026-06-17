@@ -1,65 +1,65 @@
 {{ define "main" }}
-	{{ .Content }}
+  {{ .Content }}
 
-	{{ $portfolio := hugo.Data.config.home.portfolio }}
-	{{ if eq $portfolio true}}
-		<h2>Portfolio</h2>
+  {{ $portfolio := hugo.Data.config.home.portfolio }}
+  {{ if eq $portfolio true}}
+    <h2>Portfolio</h2>
 
-		<ul class="horizontal-list">
-			{{ range index hugo.Data.portfolio.projects }}
-				<li class="card">
-					<a href="{{ .url }}">
-						<span class="header">
-							{{ .title }}
-							{{ if eq .wip true }}
-								<mark>WIP</mark>
-							{{ end }}
-						</span>
-						<hr>
-						<p class="body">
-							{{ .description }}
-						</p>
-					</a>
-			{{ end }}
-		</ul>
-	{{ end }}
+    <ul class="horizontal-list">
+      {{ range index hugo.Data.portfolio.projects }}
+        <li class="card">
+          <a href="{{ .url }}">
+            <span class="header">
+              {{ .title }}
+              {{ if eq .wip true }}
+                <mark>WIP</mark>
+              {{ end }}
+            </span>
+            <hr>
+            <p class="body">
+              {{ .description }}
+            </p>
+          </a>
+      {{ end }}
+    </ul>
+  {{ end }}
 
-	{{ $blog := hugo.Data.config.home.blog }}
-	{{ if eq $blog true }}
-		<h2>Blog</h2>
+  {{ $blog := hugo.Data.config.home.blog }}
+  {{ if eq $blog true }}
+    <h2>Blog</h2>
 
-		<ul>
-			{{ $timeformat := hugo.Data.config.home.date_format }}
-			{{ range where .Site.RegularPages "Type" "posts" }}
-				<li class="post-list-item">
-					{{ .Date | time.Format $timeformat }} »
-					<a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ .Page.ReadingTime }} mins)
-				</li>
-			{{ end }}
-		</ul>
-	{{ end }}
+    <ul>
+      {{ $timeformat := hugo.Data.config.home.date_format }}
+      {{ range where .Site.RegularPages "Type" "posts" }}
+        <li class="post-list-item">
+          {{ .Date | time.Format $timeformat }} »
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a> ({{ .Page.ReadingTime }} mins)
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
 
-	{{ $oldProjects := hugo.Data.config.home.old_projects }}
-	{{ if eq $oldProjects true }}
-		<h2>Old Projects</h2>
+  {{ $oldProjects := hugo.Data.config.home.old_projects }}
+  {{ if eq $oldProjects true }}
+    <h2>Old Projects</h2>
 
-		<ul class="horizontal-list">
-			{{ range index hugo.Data.old_projects.projects }}
-				<li class="card">
-					<a href="{{ .url }}">
-						<span class="header">
-							{{ .title }}
-							{{ if eq .new true }}
-								<mark>NEW</mark>
-							{{ end }}
-							<hr>
-							<p class="body">
-								{{ .description }}
-							</p>
-						</span>
-					</a>
-				</li>
-			{{ end }}
-		</ul>
-	{{ end }}
+    <ul class="horizontal-list">
+      {{ range index hugo.Data.old_projects.projects }}
+        <li class="card">
+          <a href="{{ .url }}">
+            <span class="header">
+              {{ .title }}
+              {{ if eq .new true }}
+                <mark>NEW</mark>
+              {{ end }}
+              <hr>
+              <p class="body">
+                {{ .description }}
+              </p>
+            </span>
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
 {{ end }}

@@ -13,15 +13,15 @@ const themeToggleBtn = document.querySelector(".theme-toggle")
  * @returns {string} Current theme
  */
 function calculateSettingAsThemeString(localStorageTheme, systemThemeSetting) {
-	if (localStorageTheme !== null) {
-		return localStorageTheme
-	}
+  if (localStorageTheme !== null) {
+    return localStorageTheme
+  }
 
-	if (systemThemeSetting.matches) {
-		return "light"
-	}
+  if (systemThemeSetting.matches) {
+    return "light"
+  }
 
-	return "dark"
+  return "dark"
 }
 
 // Get current theme
@@ -29,21 +29,21 @@ let currentTheme = calculateSettingAsThemeString(localStorageTheme, systemThemeS
 
 // Set current theme on load
 window.onload = function() {
-	document.querySelector("html").setAttribute("data-theme", currentTheme)
+  document.querySelector("html").setAttribute("data-theme", currentTheme)
 }
 
 themeToggleBtn.addEventListener("click", () => {
-	let newTheme
+  let newTheme
 
-	if (currentTheme === "dark") {
-		newTheme = "light"
-	} else {
-		newTheme = "dark"
-	}
+  if (currentTheme === "dark") {
+    newTheme = "light"
+  } else {
+    newTheme = "dark"
+  }
 
-	document.querySelector("html").setAttribute("data-theme", newTheme)
+  document.querySelector("html").setAttribute("data-theme", newTheme)
 
-	localStorage.setItem("theme", newTheme)
+  localStorage.setItem("theme", newTheme)
 
-	currentTheme = newTheme
+  currentTheme = newTheme
 })

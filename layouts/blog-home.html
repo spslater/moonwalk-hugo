@@ -1,11 +1,11 @@
 {{ define "main" }}
-	{{ $p := where site.RegularPages "Type" "posts" }}
+  {{ $p := where site.RegularPages "Type" "posts" }}
 
-	<header>
-		<h1>{{ site.Title }}</h1>
-	</header>
+  <header>
+    <h1>{{ site.Title }}</h1>
+  </header>
 
-	{{ .Content }}
+  {{ .Content }}
 
-	{{ partial "pages-by-date.html" ( dict "page" . "history" ( where .Site.RegularPages "Type" "posts" ) ) }}
+  {{ partial "pages-by-date.html" ( dict "page" . "history" ( where .Site.RegularPages "Type" "posts" ) ) }}
 {{ end }}
