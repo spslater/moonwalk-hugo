@@ -42,15 +42,16 @@ li {
   margin: 0.4em 0;
 }
 
-header, main, footer {
+.base {
   max-width: 720px;
   margin: 0 auto;
 }
 
-header {
+header.base {
   padding-top: 4em;
 }
-footer {
+
+footer.base {
   padding-bottom: 2em;
 }
 
